@@ -1,0 +1,19 @@
+name: "Report"
+
+on: [push, pull_request]
+
+jobs:
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: PageSpeed Insights Audit
+      uses: colbyfayock/pagespeed-insights-report-action@master
+      with:
+        url: https://colbyfayock.com
+
+    - uses: mikeal/publish-to-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
