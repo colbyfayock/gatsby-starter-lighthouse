@@ -1,1 +1,1 @@
-export { default as useLighthouseReports } from './useLighthouseReports';
+export { default as usePageSpeedReports } from './usePageSpeedReports';

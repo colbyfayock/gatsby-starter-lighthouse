@@ -1,13 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { useLighthouseReports } from 'hooks';
+import { usePageSpeedReports } from 'hooks';
 
 import Layout from 'components/Layout';
 import Container from 'components/Container';
 
 const IndexPage = () => {
-  const { reports } = useLighthouseReports();
+  const { reports } = usePageSpeedReports();
+
+  console.log('reports', reports)
 
   return (
     <Layout pageName="home">
@@ -38,9 +40,10 @@ const IndexPage = () => {
               </div>
               { reports.map((report = {}) => {
                 const { id, fetchTime, audits = {} } = report;
+                const firstContentfulPaint = report.auditByName('first_contentful_paint');
+
                 const usesHttps = audits.is_on_https;
                 const redirectsToHttps = audits.redirects_http;
-                const firstContentfulPaint = audits.first_contentful_paint;
                 return (
                   <div key={id} className="dashboard-table-row">
                     <ul>

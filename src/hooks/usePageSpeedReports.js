@@ -1,5 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
+import PageSpeedAudit from 'models/PageSpeedAudit';
+
 export default function useLighthouseReports() {
   const { allReportsJson = {} } = useStaticQuery( graphql`
     query {
@@ -7,18 +9,16 @@ export default function useLighthouseReports() {
         edges {
           node {
             id
-            fetchTime
-            audits {
-              is_on_https {
-                score
+            lighthouseResult {
+              audits {
+                first_contentful_paint {
+                  title
+                  displayValue
+                }
               }
-              redirects_http {
-                score
-              }
-              first_contentful_paint {
-                displayValue
-              }
+              requestedUrl
             }
+            analysisUTCTimestamp
           }
         }
       }
@@ -30,6 +30,6 @@ export default function useLighthouseReports() {
   });
 
   return {
-    reports
+    reports: reports.map(report => new PageSpeedAudit(report))
   }
 }
