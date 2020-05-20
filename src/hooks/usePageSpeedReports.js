@@ -9,16 +9,18 @@ export default function useLighthouseReports() {
         edges {
           node {
             id
-            lighthouseResult {
-              audits {
-                first_contentful_paint {
-                  title
-                  displayValue
+            data {
+              lighthouseResult {
+                audits {
+                  first_contentful_paint {
+                    title
+                    displayValue
+                  }
                 }
+                requestedUrl
               }
-              requestedUrl
+              analysisUTCTimestamp
             }
-            analysisUTCTimestamp
           }
         }
       }
