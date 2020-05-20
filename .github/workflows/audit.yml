@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: PageSpeed Insights Audit
-      uses: colbyfayock/pagespeed-insights-report-action@v1.0.2
+      uses: colbyfayock/pagespeed-insights-report-action@v1.0.3
       with:
         url: https://colbyfayock.com
 
