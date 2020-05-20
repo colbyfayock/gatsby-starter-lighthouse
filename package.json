@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-sass",
-  "description": "A Gatsby starter with Sass and no assumptions",
+  "name": "gatsby-starter-pagespeed-insights-report",
+  "description": "A Gatsby starter to track the history of your PageSpeed Insights report",
   "version": "0.1.2",
   "author": "Colby Fayock <hello@colbyfayock.com>",
   "dependencies": {
@@ -9,6 +9,7 @@
     "gatsby-plugin-resolve-src": "^2.1.0",
     "gatsby-plugin-sass": "^2.3.1",
     "gatsby-source-filesystem": "^2.3.3",
+    "gatsby-transformer-json": "^2.4.2",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -33,9 +34,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/colbyfayock/gatsby-starter-sass"
+    "url": "https://github.com/colbyfayock/gatsby-starter-pagespeed-insights-report"
   },
   "bugs": {
-    "url": "https://github.com/colbyfayock/gatsby-starter-sass/issues"
+    "url": "https://github.com/colbyfayock/gatsby-starter-pagespeed-insights-report/issues"
   }
 }

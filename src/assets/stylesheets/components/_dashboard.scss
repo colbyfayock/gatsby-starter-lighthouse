@@ -1,0 +1,32 @@
+.dashboard {
+
+}
+
+.dashboard-table-header {
+
+  color: white;
+  background-color: rebeccapurple;
+
+  li {
+    display: flex;
+    align-items: center;
+    font-size: .9em;
+  }
+
+}
+
+.dashboard-table-row {
+
+  ul {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    width: 25%;
+  }
+
+}
