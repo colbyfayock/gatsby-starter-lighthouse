@@ -14,7 +14,7 @@ jobs:
     - name: PageSpeed Insights Audit
       uses: colbyfayock/pagespeed-insights-report-action@v1.0.6
       with:
-        url: https://colbyfayock.com
+        url: https://gatsby-starter-pagespeed-insights-report.now.sh
 
     - uses: mikeal/publish-to-github-action@master
       env:
