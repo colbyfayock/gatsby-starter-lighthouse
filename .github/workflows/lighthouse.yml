@@ -1,6 +1,8 @@
 name: Performance Audit
 
-on: [push]
+on:
+  schedule:
+  - cron: '0 0 * * *'
 
 jobs:
   lighthouseci:
