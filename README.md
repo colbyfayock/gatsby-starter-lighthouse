@@ -1,6 +1,6 @@
-# 👓 Gatsby Sass Starter
+# 👓 Gatsby Starter Lighthouse
 
-Jumpstart your next Gatsby project with the power of Sass!
+* https://github.com/GoogleChrome/lighthouse-ci
 
 ## What This Includes
 * [Yarn](https://yarnpkg.com/en/)
