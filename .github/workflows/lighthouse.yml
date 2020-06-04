@@ -1,16 +1,15 @@
-name: Lighthouse
+name: Performance Audit
 
 on: [push]
 
 jobs:
-
   lighthouseci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Audit URLs with Field Performance Plugin
-        uses: treosh/lighthouse-ci-action@v3
-        with:
-          urls: |
-            https://www.colbyfayock.com
-          uploadArtifacts: true
+      - uses: actions/setup-node@v1
+      - run: npm install -g @lhci/cli@0.4.x
+      - run: lhci collect --url=https://gatsby-starter-pagespeed-insights-report.netlify.app
+      - uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
