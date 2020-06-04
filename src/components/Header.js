@@ -8,7 +8,7 @@ const Header = () => {
     <header>
       <Container>
         <p>
-          PageSpeed Insights Report
+          Lighthouse Report
         </p>
         <ul>
           <li>

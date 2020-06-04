@@ -55,7 +55,7 @@ const IndexPage = () => {
         <title>Home Page</title>
       </Helmet>
       <Container>
-        <h1>https://gatsby-starter-pagespeed-insights-report.netlify.app</h1>
+        <h1>https://gatsby-starter-lighthouse.netlify.app</h1>
 
         {rows.map((row = {}) => {
           const { label, id, datasets } = row;

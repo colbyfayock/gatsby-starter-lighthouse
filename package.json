@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-pagespeed-insights-report",
-  "description": "A Gatsby starter to track the history of your PageSpeed Insights report",
+  "name": "gatsby-starter-lighthouse",
+  "description": "A Gatsby starter to track the history of your Lighthouse reports",
   "version": "0.1.2",
   "author": "Colby Fayock <hello@colbyfayock.com>",
   "dependencies": {
@@ -37,9 +37,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/colbyfayock/gatsby-starter-pagespeed-insights-report"
+    "url": "https://github.com/colbyfayock/gatsby-starter-lighthouse"
   },
   "bugs": {
-    "url": "https://github.com/colbyfayock/gatsby-starter-pagespeed-insights-report/issues"
+    "url": "https://github.com/colbyfayock/gatsby-starter-lighthouse/issues"
   }
 }
