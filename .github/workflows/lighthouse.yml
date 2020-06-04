@@ -12,4 +12,5 @@ jobs:
         uses: treosh/lighthouse-ci-action@v3
         with:
           urls: |
-            https://www.colbyfayock.com/
+            https://www.colbyfayock.com
+          uploadArtifacts: true
