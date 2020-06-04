@@ -4,18 +4,18 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/assets/images`,
       },
     },
     'gatsby-transformer-json',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `reports`,
-        path: `${__dirname}/reports`,
+        name: 'lighthouse',
+        path: `${__dirname}/.lighthouseci`
       },
     },
   ],

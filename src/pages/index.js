@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import {Line} from 'react-chartjs-2';
 
-import { usePageSpeedReports } from 'hooks';
+import { useLighthouseReports } from 'hooks';
 import { friendlyDate } from 'lib/datetime';
 
 import Layout from 'components/Layout';
@@ -17,10 +17,10 @@ const audits = [
     id: 'first_cpu_idle',
     label: 'First CPU Idle'
   },
-  {
-    id: 'first_meaningful_paint',
-    label: 'First Meaninful Paint'
-  },
+  // {
+  //   id: 'first_meaningful_paint',
+  //   label: 'First Meaninful Paint'
+  // },
   {
     id: 'total_byte_weight',
     label: 'Total Byte Weight'
@@ -28,21 +28,24 @@ const audits = [
 ]
 
 const IndexPage = () => {
-  const { reports } = usePageSpeedReports();
+  const { reports } = useLighthouseReports();
 
-  const rows = audits.map(audit => {
-    const datasets = reports.map(report => {
-      const { id, timestamp } = report;
-      const data = report.auditByName(audit?.id);
-      return {
-        id,
-        timestamp: friendlyDate(timestamp),
-        value: data?.numericValue / 1000
-      }
+  const rows = audits.map(row => {
+    const { id } = row;
+
+    const data = reports.map(report => {
+      return report.audits.find(audit => audit.id === id);
     });
+
     return {
-      ...audit,
-      datasets
+      ...row,
+      datasets: data.map(({id, timestamp, numericValue}) => {
+        return {
+          id,
+          timestamp,
+          value: numericValue / 1000
+        }
+      })
     }
   });
 
@@ -52,12 +55,12 @@ const IndexPage = () => {
         <title>Home Page</title>
       </Helmet>
       <Container>
-        <h1>https://colbyfayock.com</h1>
+        <h1>https://gatsby-starter-pagespeed-insights-report.netlify.app</h1>
 
         {rows.map((row = {}) => {
           const { label, id, datasets } = row;
           const data = {
-            labels: datasets.map(({timestamp} = {}) => timestamp),
+            labels: datasets.map(({timestamp} = {}) => friendlyDate(timestamp)),
             datasets: [
               {
                 label: label,
@@ -81,27 +84,28 @@ const IndexPage = () => {
                   <li>
                     Date
                   </li>
-                  {audits.map(({ id, label } = {}) => {
+                  {reports[0].audits.map(({ id,  } = {}) => {
+                    const audit = audits.find(audit => audit.id === id);
                     return (
                       <li key={id}>
-                        { label }
+                        { audit?.label }
                       </li>
                     )
                   })}
                 </ul>
               </div>
               { reports.map((report = {}) => {
-                const { id, timestamp } = report;
+                const { audits, timestamp } = report;
                 return (
-                  <div key={id} className="dashboard-table-row">
+                  <div key={timestamp} className="dashboard-table-row">
                     <ul>
                       <li>
                         { friendlyDate(timestamp) }
                       </li>
-                      {audits.map(({ id: auditId } = {}) => {
+                      {audits.map(audit => {
                         return (
-                          <li key={auditId}>
-                            { report.auditByName(auditId)?.displayValue }
+                          <li key={audit.id}>
+                            { audit.numericValue }
                           </li>
                         )
                       })}
