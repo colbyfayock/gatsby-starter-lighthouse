@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g @lhci/cli@0.4.x
       - run: lhci collect --url=https://gatsby-starter-lighthouse.netlify.app
+      - run: sh ./scripts/lhci.sh
       - uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

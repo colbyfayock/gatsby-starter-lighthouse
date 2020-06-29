@@ -3,9 +3,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Audit from 'models/Audit';
 
 export default function useLighthouseReports() {
-  const { allLighthouseciJson = {} } = useStaticQuery( graphql`
+  const { allReportsJson = {} } = useStaticQuery( graphql`
     query {
-      allLighthouseciJson {
+      allReportsJson {
         edges {
           node {
             fetchTime
@@ -32,7 +32,7 @@ export default function useLighthouseReports() {
     }
   `);
 
-  let reports = allLighthouseciJson?.edges?.map(({ node } = {}) => {
+  let reports = allReportsJson?.edges?.map(({ node } = {}) => {
     return {
       timestamp: node?.fetchTime,
       audits: node?.audits

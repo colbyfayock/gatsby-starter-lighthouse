@@ -18,7 +18,9 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@lhci/cli": "0.4.x"
+  },
   "keywords": [
     "gatsby",
     "sass",
@@ -33,7 +35,8 @@
     "format": "Get started formatting your code with Eslint, Prettier, and stylelint",
     "start": "yarn develop",
     "serve": "gatsby serve",
-    "test": "echo 'Write tests! -> https://gatsby.dev/unit-testing'"
+    "test": "echo 'Write tests! -> https://gatsby.dev/unit-testing'",
+    "lhci": "lhci collect --url=https://gatsby-starter-lighthouse.netlify.app"
   },
   "repository": {
     "type": "git",

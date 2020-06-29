@@ -15,7 +15,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'lighthouse',
-        path: `${__dirname}/.lighthouseci`
+        path: `${__dirname}/reports`
       },
     },
   ],
