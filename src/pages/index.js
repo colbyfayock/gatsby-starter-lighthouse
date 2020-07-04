@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 import { useLighthouseReports } from 'hooks';
 import { friendlyDate } from 'lib/datetime';
@@ -11,19 +11,27 @@ import Container from 'components/Container';
 const audits = [
   {
     id: 'first_contentful_paint',
-    label: 'First Contentful Paint'
+    label: 'First Contentful Paint',
+    scale: {
+      yMin: 0,
+      yMax: 6
+    }
   },
   {
     id: 'first_cpu_idle',
-    label: 'First CPU Idle'
+    label: 'First CPU Idle',
+    scale: {
+      yMin: 0,
+      yMax: 6
+    }
   },
-  // {
-  //   id: 'first_meaningful_paint',
-  //   label: 'First Meaninful Paint'
-  // },
   {
     id: 'total_byte_weight',
-    label: 'Total Byte Weight'
+    label: 'Total Byte Weight',
+    scale: {
+      yMin: 0,
+      yMax: 400
+    }
   }
 ]
 
@@ -58,20 +66,31 @@ const IndexPage = () => {
         <h1>https://gatsby-starter-lighthouse.netlify.app</h1>
 
         {rows.map((row = {}) => {
-          const { label, id, datasets } = row;
+          const { label, id, datasets, scale } = row;
           const data = {
             labels: datasets.map(({timestamp} = {}) => friendlyDate(timestamp)),
             datasets: [
               {
                 label: label,
-                data: datasets.map(({value} = {}) => value)
+                data: datasets.map(({value} = {}) => value),
               },
             ]
           };
           return (
             <div key={id} className="dashboard-row">
               <h2 id={id}>{ label }</h2>
-              <Line data={data} />
+              <Line data={data} options={{
+                scales: {
+                  yAxes: [
+                    {
+                      ticks: {
+                        min: scale?.yMin || 0,
+                        max: scale?.yMax || 100
+                      }
+                    }
+                  ],
+                }
+              }} />
             </div>
           )
         })}
